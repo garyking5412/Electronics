@@ -1,0 +1,91 @@
+* {
+  box-sizing: border-box;
+}
+.main {
+  display: flexbox;
+  flex-wrap: wrap;
+}
+h1,
+h2 {
+  text-align: center;
+  font-family: monospace;
+}
+.lbl {
+  margin: 0px;
+  padding: 5px auto;
+  font-family: monospace;
+  font-size: 16px;
+  font-weight: bold;
+}
+input,
+textarea {
+  margin-bottom: 5px;
+  /* width: 100%; */
+  border-radius: 5px;
+}
+input:focus,
+textarea:focus {
+  border: 3px solid green;
+  outline: none;
+}
+
+label {
+  margin-left: 5px;
+}
+.controller {
+  display: flexbox;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+}
+@keyframes bounce {
+  50% {
+    transform: rotate(5deg) translate(20px, -50px);
+  }
+  to {
+    transform: scale(0.9) rotate(10deg) translate(50px, -80px);
+    opacity: 0;
+  }
+}
+.btn {
+  width: 100%;
+  border: none;
+  outline: 1px solid black;
+  margin: 5px 0px;
+  font-family: Consolas;
+  font-weight: bold;
+  font-size: 20px;
+}
+.btn:active {
+  /* animation: bounce 0.2s 1 linear; */
+}
+#btnReload {
+  color: azure;
+}
+input:checked .checkmark {
+  background-color: green;
+  color: azure;
+}
+table {
+  border-collapse: collapse;
+  width: 100%;
+}
+table th,
+td {
+  border: 1px solid black;
+}
+td:hover {
+  cursor: pointer;
+}
+/* tr {
+  background-color: green;
+  color: azure;
+} */
+th {
+  font-family: "Times New Roman", Times, serif;
+  text-align: center;
+  font-weight: 800;
+}
+td {
+  text-align: center;
+}
