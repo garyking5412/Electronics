@@ -1,3 +1,12 @@
+<link rel="stylesheet" href="/assets/users/vendor/line-awesome/line-awesome/line-awesome/css/line-awesome.min.css">
+<link rel="stylesheet" href="/assets/users/css/bootstrap.min.css">
+<link rel="stylesheet" href="/assets/users/css/plugins/owl-carousel/owl.carousel.css">
+<link rel="stylesheet" href="/assets/users/css/plugins/magnific-popup/magnific-popup.css">
+<link rel="stylesheet" href="/assets/users/css/plugins/jquery.countdown.css">
+<link rel="stylesheet" href="/assets/users/css/style.css">
+<link rel="stylesheet" href="/assets/users/css/skins/skin-demo-3.css">
+<link rel="stylesheet" href="/assets/users/css/demos/demo-3.css">
+<!-- <body> -->
 <div class="page-wrapper">
   <header class="header header-intro-clearance header-3">
     <div class="header-top">
@@ -35,8 +44,12 @@
                     </div><!-- End .header-menu -->
                   </div>
                 </li>
-                <li *ngIf="sign"><a href="#signin-modal" data-toggle="modal">Sign in / Sign up</a></li>
-                <li *ngIf="!sign"><a href="#signin-modal" data-toggle="modal">{{user.username}}</a></li>
+                <li *ngIf="!checkLogin()"><a href="#signin-modal" data-toggle="modal">{{displayname}}</a></li>
+                <li *ngIf="checkLogin()"><a href="javascript:void(0)" (click)="navigate()"
+                    data-toggle="modal">{{displayname}}</a></li>
+                <!-- <li><a href="#signin-modal" data-toggle="modal">Sign in / Sign up</a></li> -->
+                <!-- <li><a href="#signin-modal" *ngIf="checkLogin()" data-toggle="modal">{{user.username}}</a></li> -->
+                <!-- <li><a href="#signin-modal" data-toggle="modal">{{user.username}}</a></li> -->
               </ul>
             </li>
           </ul><!-- End .top-menu -->
@@ -102,14 +115,14 @@
           </div><!-- End .compare-dropdown -->
 
           <!-- <div class="wishlist">
-            <a href="wishlist.html" title="Wishlist">
-              <div class="icon">
-                <i class="icon-heart-o"></i>
-                <span class="wishlist-count badge">3</span>
-              </div>
-              <p>Wishlist</p>
-            </a>
-          </div>End .compare-dropdown -->
+              <a href="wishlist.html" title="Wishlist">
+                <div class="icon">
+                  <i class="icon-heart-o"></i>
+                  <span class="wishlist-count badge">3</span>
+                </div>
+                <p>Wishlist</p>
+              </a>
+            </div>End .compare-dropdown -->
 
           <div class="dropdown cart-dropdown">
             <a href="#" class="dropdown-toggle" role="button" data-toggle="dropdown" aria-haspopup="true"
@@ -567,7 +580,8 @@
                           <img src="assets/users/images/menu/banner-2.jpg" alt="Banner">
 
                           <div class="banner-content banner-content-bottom">
-                            <div class="banner-title text-white">New Trends<br><span><strong>spring 2019</strong></span>
+                            <div class="banner-title text-white">New Trends<br><span><strong>spring
+                                  2019</strong></span>
                             </div><!-- End .banner-title -->
                           </div><!-- End .banner-content -->
                         </a>
@@ -683,15 +697,15 @@
             <div class="intro-slider-container slider-container-ratio mb-2 mb-lg-0">
               <div class="intro-slider owl-carousel owl-simple owl-dark owl-nav-inside" data-toggle="owl"
                 data-owl-options='{
-                                  "nav": false,
-                                  "dots": true,
-                                  "responsive": {
-                                      "768": {
-                                          "nav": true,
-                                          "dots": false
-                                      }
-                                  }
-                              }'>
+                                    "nav": false,
+                                    "dots": true,
+                                    "responsive": {
+                                        "768": {
+                                            "nav": true,
+                                            "dots": false
+                                        }
+                                    }
+                                }'>
                 <div class="intro-slide">
                   <figure class="slide-users/image">
                     <picture>
@@ -824,25 +838,25 @@
           aria-labelledby="products-featured-link">
           <div class="owl-carousel owl-full carousel-equal-height carousel-with-shadow" data-toggle="owl"
             data-owl-options='{
-                          "nav": true,
-                          "dots": true,
-                          "margin": 20,
-                          "loop": false,
-                          "responsive": {
-                              "0": {
-                                  "items":2
-                              },
-                              "600": {
-                                  "items":2
-                              },
-                              "992": {
-                                  "items":3
-                              },
-                              "1200": {
-                                  "items":4
-                              }
-                          }
-                      }'>
+                            "nav": true,
+                            "dots": true,
+                            "margin": 20,
+                            "loop": false,
+                            "responsive": {
+                                "0": {
+                                    "items":2
+                                },
+                                "600": {
+                                    "items":2
+                                },
+                                "992": {
+                                    "items":3
+                                },
+                                "1200": {
+                                    "items":4
+                                }
+                            }
+                        }'>
             <div class="product product-2">
               <figure class="product-media">
                 <a href="product.html">
@@ -886,7 +900,7 @@
                   <img src="assets/users/images/demos/demo-3/products/product-2.jpg" alt="Product users/image"
                     class="product-users/image">
                   <!-- <img src="assets/users/images/demos/demo-3/products/product-2-2.jpg" alt="Product users/image"
-                    class="product-users/image-hover"> -->
+                      class="product-users/image-hover"> -->
                 </a>
 
                 <div class="product-action-vertical">
@@ -904,7 +918,8 @@
                 <div class="product-cat">
                   <a href="#">Smartwatches</a>
                 </div><!-- End .product-cat -->
-                <h3 class="product-title"><a href="product.html">Apple - Apple Watch Series 3 with White Sport Band</a>
+                <h3 class="product-title"><a href="product.html">Apple - Apple Watch Series 3 with White Sport
+                    Band</a>
                 </h3><!-- End .product-title -->
                 <div class="product-price">
                   $214.99
@@ -1037,25 +1052,25 @@
         <div class="tab-pane p-0 fade" id="products-sale-tab" role="tabpanel" aria-labelledby="products-sale-link">
           <div class="owl-carousel owl-full carousel-equal-height carousel-with-shadow" data-toggle="owl"
             data-owl-options='{
-                          "nav": true,
-                          "dots": true,
-                          "margin": 20,
-                          "loop": false,
-                          "responsive": {
-                              "0": {
-                                  "items":2
-                              },
-                              "600": {
-                                  "items":2
-                              },
-                              "992": {
-                                  "items":3
-                              },
-                              "1200": {
-                                  "items":4
-                              }
-                          }
-                      }'>
+                            "nav": true,
+                            "dots": true,
+                            "margin": 20,
+                            "loop": false,
+                            "responsive": {
+                                "0": {
+                                    "items":2
+                                },
+                                "600": {
+                                    "items":2
+                                },
+                                "992": {
+                                    "items":3
+                                },
+                                "1200": {
+                                    "items":4
+                                }
+                            }
+                        }'>
             <div class="product product-2">
               <figure class="product-media">
                 <a href="product.html">
@@ -1172,7 +1187,7 @@
                   <img src="assets/users/images/demos/demo-3/products/product-2.jpg" alt="Product users/image"
                     class="product-users/image">
                   <!-- <img src="assets/users/images/demos/demo-3/products/product-2-2.jpg" alt="Product users/image"
-                    class="product-users/image-hover"> -->
+                      class="product-users/image-hover"> -->
                 </a>
 
                 <div class="product-action-vertical">
@@ -1190,7 +1205,8 @@
                 <div class="product-cat">
                   <a href="#">Smartwatches</a>
                 </div><!-- End .product-cat -->
-                <h3 class="product-title"><a href="product.html">Apple - Apple Watch Series 3 with White Sport Band</a>
+                <h3 class="product-title"><a href="product.html">Apple - Apple Watch Series 3 with White Sport
+                    Band</a>
                 </h3><!-- End .product-title -->
                 <div class="product-price">
                   $214.99
@@ -1214,25 +1230,25 @@
         <div class="tab-pane p-0 fade" id="products-top-tab" role="tabpanel" aria-labelledby="products-top-link">
           <div class="owl-carousel owl-full carousel-equal-height carousel-with-shadow" data-toggle="owl"
             data-owl-options='{
-                          "nav": true,
-                          "dots": true,
-                          "margin": 20,
-                          "loop": false,
-                          "responsive": {
-                              "0": {
-                                  "items":2
-                              },
-                              "600": {
-                                  "items":2
-                              },
-                              "992": {
-                                  "items":3
-                              },
-                              "1200": {
-                                  "items":4
-                              }
-                          }
-                      }'>
+                            "nav": true,
+                            "dots": true,
+                            "margin": 20,
+                            "loop": false,
+                            "responsive": {
+                                "0": {
+                                    "items":2
+                                },
+                                "600": {
+                                    "items":2
+                                },
+                                "992": {
+                                    "items":3
+                                },
+                                "1200": {
+                                    "items":4
+                                }
+                            }
+                        }'>
             <div class="product product-2">
               <figure class="product-media">
                 <a href="product.html">
@@ -1349,7 +1365,7 @@
                   <img src="assets/users/images/demos/demo-3/products/product-2.jpg" alt="Product users/image"
                     class="product-users/image">
                   <!-- <img src="assets/users/images/demos/demo-3/products/product-2-2.jpg" alt="Product users/image"
-                    class="product-users/image-hover"> -->
+                      class="product-users/image-hover"> -->
                 </a>
 
                 <div class="product-action-vertical">
@@ -1367,7 +1383,8 @@
                 <div class="product-cat">
                   <a href="#">Smartwatches</a>
                 </div><!-- End .product-cat -->
-                <h3 class="product-title"><a href="product.html">Apple - Apple Watch Series 3 with White Sport Band</a>
+                <h3 class="product-title"><a href="product.html">Apple - Apple Watch Series 3 with White Sport
+                    Band</a>
                 </h3><!-- End .product-title -->
                 <div class="product-price">
                   $214.99
@@ -1586,28 +1603,28 @@
 
     <div class="container">
       <div class="owl-carousel mt-5 mb-5 owl-simple" data-toggle="owl" data-owl-options='{
-                      "nav": false,
-                      "dots": false,
-                      "margin": 30,
-                      "loop": false,
-                      "responsive": {
-                          "0": {
-                              "items":2
-                          },
-                          "420": {
-                              "items":3
-                          },
-                          "600": {
-                              "items":4
-                          },
-                          "900": {
-                              "items":5
-                          },
-                          "1024": {
-                              "items":6
-                          }
-                      }
-                  }'>
+                        "nav": false,
+                        "dots": false,
+                        "margin": 30,
+                        "loop": false,
+                        "responsive": {
+                            "0": {
+                                "items":2
+                            },
+                            "420": {
+                                "items":3
+                            },
+                            "600": {
+                                "items":4
+                            },
+                            "900": {
+                                "items":5
+                            },
+                            "1024": {
+                                "items":6
+                            }
+                        }
+                    }'>
         <a href="#" class="brand">
           <img src="assets/users/images/brands/1.png" alt="Brand Name">
         </a>
@@ -1689,25 +1706,25 @@
               aria-labelledby="trending-all-link">
               <div class="owl-carousel owl-full carousel-equal-height carousel-with-shadow" data-toggle="owl"
                 data-owl-options='{
-                                  "nav": true,
-                                  "dots": false,
-                                  "margin": 20,
-                                  "loop": false,
-                                  "responsive": {
-                                      "0": {
-                                          "items":2
-                                      },
-                                      "480": {
-                                          "items":2
-                                      },
-                                      "768": {
-                                          "items":3
-                                      },
-                                      "992": {
-                                          "items":4
-                                      }
-                                  }
-                              }'>
+                                    "nav": true,
+                                    "dots": false,
+                                    "margin": 20,
+                                    "loop": false,
+                                    "responsive": {
+                                        "0": {
+                                            "items":2
+                                        },
+                                        "480": {
+                                            "items":2
+                                        },
+                                        "768": {
+                                            "items":3
+                                        },
+                                        "992": {
+                                            "items":4
+                                        }
+                                    }
+                                }'>
                 <div class="product product-2">
                   <figure class="product-media">
                     <span class="product-label label-circle label-top">Top</span>
@@ -1717,7 +1734,8 @@
                     </a>
 
                     <div class="product-action-vertical">
-                      <a href="#" class="btn-product-icon btn-wishlist btn-expandable"><span>add to wishlist</span></a>
+                      <a href="#" class="btn-product-icon btn-wishlist btn-expandable"><span>add to
+                          wishlist</span></a>
                     </div><!-- End .product-action -->
 
                     <div class="product-action product-action-dark">
@@ -1760,7 +1778,8 @@
                     </a>
 
                     <div class="product-action-vertical">
-                      <a href="#" class="btn-product-icon btn-wishlist btn-expandable"><span>add to wishlist</span></a>
+                      <a href="#" class="btn-product-icon btn-wishlist btn-expandable"><span>add to
+                          wishlist</span></a>
                     </div><!-- End .product-action -->
 
                     <div class="product-action product-action-dark">
@@ -1797,7 +1816,8 @@
                     </a>
 
                     <div class="product-action-vertical">
-                      <a href="#" class="btn-product-icon btn-wishlist btn-expandable"><span>add to wishlist</span></a>
+                      <a href="#" class="btn-product-icon btn-wishlist btn-expandable"><span>add to
+                          wishlist</span></a>
                     </div><!-- End .product-action -->
 
                     <div class="product-action product-action-dark">
@@ -1842,7 +1862,8 @@
                     </a>
 
                     <div class="product-action-vertical">
-                      <a href="#" class="btn-product-icon btn-wishlist btn-expandable"><span>add to wishlist</span></a>
+                      <a href="#" class="btn-product-icon btn-wishlist btn-expandable"><span>add to
+                          wishlist</span></a>
                     </div><!-- End .product-action -->
 
                     <div class="product-action product-action-dark">
@@ -1880,7 +1901,8 @@
                     </a>
 
                     <div class="product-action-vertical">
-                      <a href="#" class="btn-product-icon btn-wishlist btn-expandable"><span>add to wishlist</span></a>
+                      <a href="#" class="btn-product-icon btn-wishlist btn-expandable"><span>add to
+                          wishlist</span></a>
                     </div><!-- End .product-action -->
 
                     <div class="product-action product-action-dark">
@@ -1917,7 +1939,8 @@
                     </a>
 
                     <div class="product-action-vertical">
-                      <a href="#" class="btn-product-icon btn-wishlist btn-expandable"><span>add to wishlist</span></a>
+                      <a href="#" class="btn-product-icon btn-wishlist btn-expandable"><span>add to
+                          wishlist</span></a>
                     </div><!-- End .product-action -->
 
                     <div class="product-action product-action-dark">
@@ -1949,25 +1972,25 @@
             <div class="tab-pane p-0 fade" id="trending-tv-tab" role="tabpanel" aria-labelledby="trending-tv-link">
               <div class="owl-carousel owl-full carousel-equal-height carousel-with-shadow" data-toggle="owl"
                 data-owl-options='{
-                                  "nav": true,
-                                  "dots": false,
-                                  "margin": 20,
-                                  "loop": false,
-                                  "responsive": {
-                                      "0": {
-                                          "items":2
-                                      },
-                                      "480": {
-                                          "items":2
-                                      },
-                                      "768": {
-                                          "items":3
-                                      },
-                                      "992": {
-                                          "items":4
-                                      }
-                                  }
-                              }'>
+                                    "nav": true,
+                                    "dots": false,
+                                    "margin": 20,
+                                    "loop": false,
+                                    "responsive": {
+                                        "0": {
+                                            "items":2
+                                        },
+                                        "480": {
+                                            "items":2
+                                        },
+                                        "768": {
+                                            "items":3
+                                        },
+                                        "992": {
+                                            "items":4
+                                        }
+                                    }
+                                }'>
                 <div class="product product-2">
                   <figure class="product-media">
                     <span class="product-label label-circle label-new">New</span>
@@ -1977,7 +2000,8 @@
                     </a>
 
                     <div class="product-action-vertical">
-                      <a href="#" class="btn-product-icon btn-wishlist btn-expandable"><span>add to wishlist</span></a>
+                      <a href="#" class="btn-product-icon btn-wishlist btn-expandable"><span>add to
+                          wishlist</span></a>
                     </div><!-- End .product-action -->
 
                     <div class="product-action product-action-dark">
@@ -1991,7 +2015,8 @@
                     <div class="product-cat">
                       <a href="#">Tablets</a>
                     </div><!-- End .product-cat -->
-                    <h3 class="product-title"><a href="product.html">Apple - 11 Inch iPad Pro with Wi-Fi 256GB </a></h3>
+                    <h3 class="product-title"><a href="product.html">Apple - 11 Inch iPad Pro with Wi-Fi 256GB </a>
+                    </h3>
                     <!-- End .product-title -->
                     <div class="product-price">
                       $899.99
@@ -2020,7 +2045,8 @@
                     </a>
 
                     <div class="product-action-vertical">
-                      <a href="#" class="btn-product-icon btn-wishlist btn-expandable"><span>add to wishlist</span></a>
+                      <a href="#" class="btn-product-icon btn-wishlist btn-expandable"><span>add to
+                          wishlist</span></a>
                     </div><!-- End .product-action -->
 
                     <div class="product-action product-action-dark">
@@ -2058,7 +2084,8 @@
                     </a>
 
                     <div class="product-action-vertical">
-                      <a href="#" class="btn-product-icon btn-wishlist btn-expandable"><span>add to wishlist</span></a>
+                      <a href="#" class="btn-product-icon btn-wishlist btn-expandable"><span>add to
+                          wishlist</span></a>
                     </div><!-- End .product-action -->
 
                     <div class="product-action product-action-dark">
@@ -2103,7 +2130,8 @@
                     </a>
 
                     <div class="product-action-vertical">
-                      <a href="#" class="btn-product-icon btn-wishlist btn-expandable"><span>add to wishlist</span></a>
+                      <a href="#" class="btn-product-icon btn-wishlist btn-expandable"><span>add to
+                          wishlist</span></a>
                     </div><!-- End .product-action -->
 
                     <div class="product-action product-action-dark">
@@ -2140,7 +2168,8 @@
                     </a>
 
                     <div class="product-action-vertical">
-                      <a href="#" class="btn-product-icon btn-wishlist btn-expandable"><span>add to wishlist</span></a>
+                      <a href="#" class="btn-product-icon btn-wishlist btn-expandable"><span>add to
+                          wishlist</span></a>
                     </div><!-- End .product-action -->
 
                     <div class="product-action product-action-dark">
@@ -2173,25 +2202,25 @@
               aria-labelledby="trending-computers-link">
               <div class="owl-carousel owl-full carousel-equal-height carousel-with-shadow" data-toggle="owl"
                 data-owl-options='{
-                                  "nav": true,
-                                  "dots": false,
-                                  "margin": 20,
-                                  "loop": false,
-                                  "responsive": {
-                                      "0": {
-                                          "items":2
-                                      },
-                                      "480": {
-                                          "items":2
-                                      },
-                                      "768": {
-                                          "items":3
-                                      },
-                                      "992": {
-                                          "items":4
-                                      }
-                                  }
-                              }'>
+                                    "nav": true,
+                                    "dots": false,
+                                    "margin": 20,
+                                    "loop": false,
+                                    "responsive": {
+                                        "0": {
+                                            "items":2
+                                        },
+                                        "480": {
+                                            "items":2
+                                        },
+                                        "768": {
+                                            "items":3
+                                        },
+                                        "992": {
+                                            "items":4
+                                        }
+                                    }
+                                }'>
                 <div class="product product-2">
                   <figure class="product-media">
                     <span class="product-label label-circle label-top">Top</span>
@@ -2201,7 +2230,8 @@
                     </a>
 
                     <div class="product-action-vertical">
-                      <a href="#" class="btn-product-icon btn-wishlist btn-expandable"><span>add to wishlist</span></a>
+                      <a href="#" class="btn-product-icon btn-wishlist btn-expandable"><span>add to
+                          wishlist</span></a>
                     </div><!-- End .product-action -->
 
                     <div class="product-action product-action-dark">
@@ -2238,7 +2268,8 @@
                     </a>
 
                     <div class="product-action-vertical">
-                      <a href="#" class="btn-product-icon btn-wishlist btn-expandable"><span>add to wishlist</span></a>
+                      <a href="#" class="btn-product-icon btn-wishlist btn-expandable"><span>add to
+                          wishlist</span></a>
                     </div><!-- End .product-action -->
 
                     <div class="product-action product-action-dark">
@@ -2275,7 +2306,8 @@
                     </a>
 
                     <div class="product-action-vertical">
-                      <a href="#" class="btn-product-icon btn-wishlist btn-expandable"><span>add to wishlist</span></a>
+                      <a href="#" class="btn-product-icon btn-wishlist btn-expandable"><span>add to
+                          wishlist</span></a>
                     </div><!-- End .product-action -->
 
                     <div class="product-action product-action-dark">
@@ -2289,7 +2321,8 @@
                     <div class="product-cat">
                       <a href="#">Tablets</a>
                     </div><!-- End .product-cat -->
-                    <h3 class="product-title"><a href="product.html">Apple - 11 Inch iPad Pro with Wi-Fi 256GB </a></h3>
+                    <h3 class="product-title"><a href="product.html">Apple - 11 Inch iPad Pro with Wi-Fi 256GB </a>
+                    </h3>
                     <!-- End .product-title -->
                     <div class="product-price">
                       $899.99
@@ -2318,7 +2351,8 @@
                     </a>
 
                     <div class="product-action-vertical">
-                      <a href="#" class="btn-product-icon btn-wishlist btn-expandable"><span>add to wishlist</span></a>
+                      <a href="#" class="btn-product-icon btn-wishlist btn-expandable"><span>add to
+                          wishlist</span></a>
                     </div><!-- End .product-action -->
 
                     <div class="product-action product-action-dark">
@@ -2356,7 +2390,8 @@
                     </a>
 
                     <div class="product-action-vertical">
-                      <a href="#" class="btn-product-icon btn-wishlist btn-expandable"><span>add to wishlist</span></a>
+                      <a href="#" class="btn-product-icon btn-wishlist btn-expandable"><span>add to
+                          wishlist</span></a>
                     </div><!-- End .product-action -->
 
                     <div class="product-action product-action-dark">
@@ -2397,25 +2432,25 @@
               aria-labelledby="trending-phones-link">
               <div class="owl-carousel owl-full carousel-equal-height carousel-with-shadow" data-toggle="owl"
                 data-owl-options='{
-                                  "nav": true,
-                                  "dots": false,
-                                  "margin": 20,
-                                  "loop": false,
-                                  "responsive": {
-                                      "0": {
-                                          "items":2
-                                      },
-                                      "480": {
-                                          "items":2
-                                      },
-                                      "768": {
-                                          "items":3
-                                      },
-                                      "992": {
-                                          "items":4
-                                      }
-                                  }
-                              }'>
+                                    "nav": true,
+                                    "dots": false,
+                                    "margin": 20,
+                                    "loop": false,
+                                    "responsive": {
+                                        "0": {
+                                            "items":2
+                                        },
+                                        "480": {
+                                            "items":2
+                                        },
+                                        "768": {
+                                            "items":3
+                                        },
+                                        "992": {
+                                            "items":4
+                                        }
+                                    }
+                                }'>
                 <div class="product product-2">
                   <figure class="product-media">
                     <span class="product-label label-circle label-top">Top</span>
@@ -2425,7 +2460,8 @@
                     </a>
 
                     <div class="product-action-vertical">
-                      <a href="#" class="btn-product-icon btn-wishlist btn-expandable"><span>add to wishlist</span></a>
+                      <a href="#" class="btn-product-icon btn-wishlist btn-expandable"><span>add to
+                          wishlist</span></a>
                     </div><!-- End .product-action -->
 
                     <div class="product-action product-action-dark">
@@ -2461,7 +2497,8 @@
                     </a>
 
                     <div class="product-action-vertical">
-                      <a href="#" class="btn-product-icon btn-wishlist btn-expandable"><span>add to wishlist</span></a>
+                      <a href="#" class="btn-product-icon btn-wishlist btn-expandable"><span>add to
+                          wishlist</span></a>
                     </div><!-- End .product-action -->
 
                     <div class="product-action product-action-dark">
@@ -2498,7 +2535,8 @@
                     </a>
 
                     <div class="product-action-vertical">
-                      <a href="#" class="btn-product-icon btn-wishlist btn-expandable"><span>add to wishlist</span></a>
+                      <a href="#" class="btn-product-icon btn-wishlist btn-expandable"><span>add to
+                          wishlist</span></a>
                     </div><!-- End .product-action -->
 
                     <div class="product-action product-action-dark">
@@ -2512,7 +2550,8 @@
                     <div class="product-cat">
                       <a href="#">Tablets</a>
                     </div><!-- End .product-cat -->
-                    <h3 class="product-title"><a href="product.html">Apple - 11 Inch iPad Pro with Wi-Fi 256GB </a></h3>
+                    <h3 class="product-title"><a href="product.html">Apple - 11 Inch iPad Pro with Wi-Fi 256GB </a>
+                    </h3>
                     <!-- End .product-title -->
                     <div class="product-price">
                       $899.99
@@ -2542,7 +2581,8 @@
                     </a>
 
                     <div class="product-action-vertical">
-                      <a href="#" class="btn-product-icon btn-wishlist btn-expandable"><span>add to wishlist</span></a>
+                      <a href="#" class="btn-product-icon btn-wishlist btn-expandable"><span>add to
+                          wishlist</span></a>
                     </div><!-- End .product-action -->
 
                     <div class="product-action product-action-dark">
@@ -2579,7 +2619,8 @@
                     </a>
 
                     <div class="product-action-vertical">
-                      <a href="#" class="btn-product-icon btn-wishlist btn-expandable"><span>add to wishlist</span></a>
+                      <a href="#" class="btn-product-icon btn-wishlist btn-expandable"><span>add to
+                          wishlist</span></a>
                     </div><!-- End .product-action -->
 
                     <div class="product-action product-action-dark">
@@ -2617,7 +2658,8 @@
                     </a>
 
                     <div class="product-action-vertical">
-                      <a href="#" class="btn-product-icon btn-wishlist btn-expandable"><span>add to wishlist</span></a>
+                      <a href="#" class="btn-product-icon btn-wishlist btn-expandable"><span>add to
+                          wishlist</span></a>
                     </div><!-- End .product-action -->
 
                     <div class="product-action product-action-dark">
@@ -2658,25 +2700,25 @@
               aria-labelledby="trending-watches-link">
               <div class="owl-carousel owl-full carousel-equal-height carousel-with-shadow" data-toggle="owl"
                 data-owl-options='{
-                                  "nav": true,
-                                  "dots": false,
-                                  "margin": 20,
-                                  "loop": false,
-                                  "responsive": {
-                                      "0": {
-                                          "items":2
-                                      },
-                                      "480": {
-                                          "items":2
-                                      },
-                                      "768": {
-                                          "items":3
-                                      },
-                                      "992": {
-                                          "items":4
-                                      }
-                                  }
-                              }'>
+                                    "nav": true,
+                                    "dots": false,
+                                    "margin": 20,
+                                    "loop": false,
+                                    "responsive": {
+                                        "0": {
+                                            "items":2
+                                        },
+                                        "480": {
+                                            "items":2
+                                        },
+                                        "768": {
+                                            "items":3
+                                        },
+                                        "992": {
+                                            "items":4
+                                        }
+                                    }
+                                }'>
                 <div class="product product-2">
                   <figure class="product-media">
                     <span class="product-label label-circle label-top">Top</span>
@@ -2687,7 +2729,8 @@
                     </a>
 
                     <div class="product-action-vertical">
-                      <a href="#" class="btn-product-icon btn-wishlist btn-expandable"><span>add to wishlist</span></a>
+                      <a href="#" class="btn-product-icon btn-wishlist btn-expandable"><span>add to
+                          wishlist</span></a>
                     </div><!-- End .product-action -->
 
                     <div class="product-action product-action-dark">
@@ -2732,7 +2775,8 @@
                     </a>
 
                     <div class="product-action-vertical">
-                      <a href="#" class="btn-product-icon btn-wishlist btn-expandable"><span>add to wishlist</span></a>
+                      <a href="#" class="btn-product-icon btn-wishlist btn-expandable"><span>add to
+                          wishlist</span></a>
                     </div><!-- End .product-action -->
 
                     <div class="product-action product-action-dark">
@@ -2768,7 +2812,8 @@
                     </a>
 
                     <div class="product-action-vertical">
-                      <a href="#" class="btn-product-icon btn-wishlist btn-expandable"><span>add to wishlist</span></a>
+                      <a href="#" class="btn-product-icon btn-wishlist btn-expandable"><span>add to
+                          wishlist</span></a>
                     </div><!-- End .product-action -->
 
                     <div class="product-action product-action-dark">
@@ -2805,7 +2850,8 @@
                     </a>
 
                     <div class="product-action-vertical">
-                      <a href="#" class="btn-product-icon btn-wishlist btn-expandable"><span>add to wishlist</span></a>
+                      <a href="#" class="btn-product-icon btn-wishlist btn-expandable"><span>add to
+                          wishlist</span></a>
                     </div><!-- End .product-action -->
 
                     <div class="product-action product-action-dark">
@@ -2819,7 +2865,8 @@
                     <div class="product-cat">
                       <a href="#">Tablets</a>
                     </div><!-- End .product-cat -->
-                    <h3 class="product-title"><a href="product.html">Apple - 11 Inch iPad Pro with Wi-Fi 256GB </a></h3>
+                    <h3 class="product-title"><a href="product.html">Apple - 11 Inch iPad Pro with Wi-Fi 256GB </a>
+                    </h3>
                     <!-- End .product-title -->
                     <div class="product-price">
                       $899.99
@@ -2844,25 +2891,25 @@
             <div class="tab-pane p-0 fade" id="trending-acc-tab" role="tabpanel" aria-labelledby="trending-acc-link">
               <div class="owl-carousel owl-full carousel-equal-height carousel-with-shadow" data-toggle="owl"
                 data-owl-options='{
-                                  "nav": true,
-                                  "dots": false,
-                                  "margin": 20,
-                                  "loop": false,
-                                  "responsive": {
-                                      "0": {
-                                          "items":2
-                                      },
-                                      "480": {
-                                          "items":2
-                                      },
-                                      "768": {
-                                          "items":3
-                                      },
-                                      "992": {
-                                          "items":4
-                                      }
-                                  }
-                              }'>
+                                    "nav": true,
+                                    "dots": false,
+                                    "margin": 20,
+                                    "loop": false,
+                                    "responsive": {
+                                        "0": {
+                                            "items":2
+                                        },
+                                        "480": {
+                                            "items":2
+                                        },
+                                        "768": {
+                                            "items":3
+                                        },
+                                        "992": {
+                                            "items":4
+                                        }
+                                    }
+                                }'>
                 <div class="product product-2">
                   <figure class="product-media">
                     <span class="product-label label-circle label-top">Top</span>
@@ -2872,7 +2919,8 @@
                     </a>
 
                     <div class="product-action-vertical">
-                      <a href="#" class="btn-product-icon btn-wishlist btn-expandable"><span>add to wishlist</span></a>
+                      <a href="#" class="btn-product-icon btn-wishlist btn-expandable"><span>add to
+                          wishlist</span></a>
                     </div><!-- End .product-action -->
 
                     <div class="product-action product-action-dark">
@@ -2909,7 +2957,8 @@
                     </a>
 
                     <div class="product-action-vertical">
-                      <a href="#" class="btn-product-icon btn-wishlist btn-expandable"><span>add to wishlist</span></a>
+                      <a href="#" class="btn-product-icon btn-wishlist btn-expandable"><span>add to
+                          wishlist</span></a>
                     </div><!-- End .product-action -->
 
                     <div class="product-action product-action-dark">
@@ -2946,7 +2995,8 @@
                     </a>
 
                     <div class="product-action-vertical">
-                      <a href="#" class="btn-product-icon btn-wishlist btn-expandable"><span>add to wishlist</span></a>
+                      <a href="#" class="btn-product-icon btn-wishlist btn-expandable"><span>add to
+                          wishlist</span></a>
                     </div><!-- End .product-action -->
 
                     <div class="product-action product-action-dark">
@@ -2982,7 +3032,8 @@
                     </a>
 
                     <div class="product-action-vertical">
-                      <a href="#" class="btn-product-icon btn-wishlist btn-expandable"><span>add to wishlist</span></a>
+                      <a href="#" class="btn-product-icon btn-wishlist btn-expandable"><span>add to
+                          wishlist</span></a>
                     </div><!-- End .product-action -->
 
                     <div class="product-action product-action-dark">
@@ -3019,7 +3070,8 @@
                     </a>
 
                     <div class="product-action-vertical">
-                      <a href="#" class="btn-product-icon btn-wishlist btn-expandable"><span>add to wishlist</span></a>
+                      <a href="#" class="btn-product-icon btn-wishlist btn-expandable"><span>add to
+                          wishlist</span></a>
                     </div><!-- End .product-action -->
 
                     <div class="product-action product-action-dark">
@@ -3033,7 +3085,8 @@
                     <div class="product-cat">
                       <a href="#">Tablets</a>
                     </div><!-- End .product-cat -->
-                    <h3 class="product-title"><a href="product.html">Apple - 11 Inch iPad Pro with Wi-Fi 256GB </a></h3>
+                    <h3 class="product-title"><a href="product.html">Apple - 11 Inch iPad Pro with Wi-Fi 256GB </a>
+                    </h3>
                     <!-- End .product-title -->
                     <div class="product-price">
                       $899.99
@@ -3104,28 +3157,28 @@
         <div class="tab-pane p-0 fade show active" id="top-all-tab" role="tabpanel" aria-labelledby="top-all-link">
           <div class="owl-carousel owl-full carousel-equal-height carousel-with-shadow" data-toggle="owl"
             data-owl-options='{
-                          "nav": true,
-                          "dots": false,
-                          "margin": 20,
-                          "loop": false,
-                          "responsive": {
-                              "0": {
-                                  "items":2
-                              },
-                              "480": {
-                                  "items":2
-                              },
-                              "768": {
-                                  "items":3
-                              },
-                              "992": {
-                                  "items":4
-                              },
-                              "1200": {
-                                  "items":5
-                              }
-                          }
-                      }'>
+                            "nav": true,
+                            "dots": false,
+                            "margin": 20,
+                            "loop": false,
+                            "responsive": {
+                                "0": {
+                                    "items":2
+                                },
+                                "480": {
+                                    "items":2
+                                },
+                                "768": {
+                                    "items":3
+                                },
+                                "992": {
+                                    "items":4
+                                },
+                                "1200": {
+                                    "items":5
+                                }
+                            }
+                        }'>
             <div class="product product-2">
               <figure class="product-media">
                 <span class="product-label label-circle label-top">Top</span>
@@ -3365,28 +3418,28 @@
         <div class="tab-pane p-0 fade" id="top-tv-tab" role="tabpanel" aria-labelledby="top-tv-link">
           <div class="owl-carousel owl-full carousel-equal-height carousel-with-shadow" data-toggle="owl"
             data-owl-options='{
-                          "nav": true,
-                          "dots": false,
-                          "margin": 20,
-                          "loop": false,
-                          "responsive": {
-                              "0": {
-                                  "items":2
-                              },
-                              "480": {
-                                  "items":2
-                              },
-                              "768": {
-                                  "items":3
-                              },
-                              "992": {
-                                  "items":4
-                              },
-                              "1200": {
-                                  "items":5
-                              }
-                          }
-                      }'>
+                            "nav": true,
+                            "dots": false,
+                            "margin": 20,
+                            "loop": false,
+                            "responsive": {
+                                "0": {
+                                    "items":2
+                                },
+                                "480": {
+                                    "items":2
+                                },
+                                "768": {
+                                    "items":3
+                                },
+                                "992": {
+                                    "items":4
+                                },
+                                "1200": {
+                                    "items":5
+                                }
+                            }
+                        }'>
             <div class="product product-2">
               <figure class="product-media">
                 <span class="product-label label-circle label-new">New</span>
@@ -3589,28 +3642,28 @@
         <div class="tab-pane p-0 fade" id="top-computers-tab" role="tabpanel" aria-labelledby="top-computers-link">
           <div class="owl-carousel owl-full carousel-equal-height carousel-with-shadow" data-toggle="owl"
             data-owl-options='{
-                          "nav": true,
-                          "dots": false,
-                          "margin": 20,
-                          "loop": false,
-                          "responsive": {
-                              "0": {
-                                  "items":2
-                              },
-                              "480": {
-                                  "items":2
-                              },
-                              "768": {
-                                  "items":3
-                              },
-                              "992": {
-                                  "items":4
-                              },
-                              "1200": {
-                                  "items":5
-                              }
-                          }
-                      }'>
+                            "nav": true,
+                            "dots": false,
+                            "margin": 20,
+                            "loop": false,
+                            "responsive": {
+                                "0": {
+                                    "items":2
+                                },
+                                "480": {
+                                    "items":2
+                                },
+                                "768": {
+                                    "items":3
+                                },
+                                "992": {
+                                    "items":4
+                                },
+                                "1200": {
+                                    "items":5
+                                }
+                            }
+                        }'>
             <div class="product product-2">
               <figure class="product-media">
                 <span class="product-label label-circle label-top">Top</span>
@@ -3813,28 +3866,28 @@
         <div class="tab-pane p-0 fade" id="top-phones-tab" role="tabpanel" aria-labelledby="top-phones-link">
           <div class="owl-carousel owl-full carousel-equal-height carousel-with-shadow" data-toggle="owl"
             data-owl-options='{
-                          "nav": true,
-                          "dots": false,
-                          "margin": 20,
-                          "loop": false,
-                          "responsive": {
-                              "0": {
-                                  "items":2
-                              },
-                              "480": {
-                                  "items":2
-                              },
-                              "768": {
-                                  "items":3
-                              },
-                              "992": {
-                                  "items":4
-                              },
-                              "1200": {
-                                  "items":5
-                              }
-                          }
-                      }'>
+                            "nav": true,
+                            "dots": false,
+                            "margin": 20,
+                            "loop": false,
+                            "responsive": {
+                                "0": {
+                                    "items":2
+                                },
+                                "480": {
+                                    "items":2
+                                },
+                                "768": {
+                                    "items":3
+                                },
+                                "992": {
+                                    "items":4
+                                },
+                                "1200": {
+                                    "items":5
+                                }
+                            }
+                        }'>
             <div class="product product-2">
               <figure class="product-media">
                 <span class="product-label label-circle label-top">Top</span>
@@ -4074,28 +4127,28 @@
         <div class="tab-pane p-0 fade" id="top-watches-tab" role="tabpanel" aria-labelledby="top-watches-link">
           <div class="owl-carousel owl-full carousel-equal-height carousel-with-shadow" data-toggle="owl"
             data-owl-options='{
-                          "nav": true,
-                          "dots": false,
-                          "margin": 20,
-                          "loop": false,
-                          "responsive": {
-                              "0": {
-                                  "items":2
-                              },
-                              "480": {
-                                  "items":2
-                              },
-                              "768": {
-                                  "items":3
-                              },
-                              "992": {
-                                  "items":4
-                              },
-                              "1200": {
-                                  "items":5
-                              }
-                          }
-                      }'>
+                            "nav": true,
+                            "dots": false,
+                            "margin": 20,
+                            "loop": false,
+                            "responsive": {
+                                "0": {
+                                    "items":2
+                                },
+                                "480": {
+                                    "items":2
+                                },
+                                "768": {
+                                    "items":3
+                                },
+                                "992": {
+                                    "items":4
+                                },
+                                "1200": {
+                                    "items":5
+                                }
+                            }
+                        }'>
             <div class="product product-2">
               <figure class="product-media">
                 <span class="product-label label-circle label-top">Top</span>
@@ -4261,28 +4314,28 @@
         <div class="tab-pane p-0 fade" id="top-acc-tab" role="tabpanel" aria-labelledby="top-acc-link">
           <div class="owl-carousel owl-full carousel-equal-height carousel-with-shadow" data-toggle="owl"
             data-owl-options='{
-                          "nav": true,
-                          "dots": false,
-                          "margin": 20,
-                          "loop": false,
-                          "responsive": {
-                              "0": {
-                                  "items":2
-                              },
-                              "480": {
-                                  "items":2
-                              },
-                              "768": {
-                                  "items":3
-                              },
-                              "992": {
-                                  "items":4
-                              },
-                              "1200": {
-                                  "items":5
-                              }
-                          }
-                      }'>
+                            "nav": true,
+                            "dots": false,
+                            "margin": 20,
+                            "loop": false,
+                            "responsive": {
+                                "0": {
+                                    "items":2
+                                },
+                                "480": {
+                                    "items":2
+                                },
+                                "768": {
+                                    "items":3
+                                },
+                                "992": {
+                                    "items":4
+                                },
+                                "1200": {
+                                    "items":5
+                                }
+                            }
+                        }'>
             <div class="product product-2">
               <figure class="product-media">
                 <span class="product-label label-circle label-top">Top</span>
@@ -4567,7 +4620,8 @@
             <div class="col-lg-6">
               <div class="cta-wrapper text-center">
                 <h3 class="cta-title">Get the Latest Deals</h3><!-- End .cta-title -->
-                <p class="cta-desc">and <br>receive <span class="text-primary">$20 coupon</span> for first shopping</p>
+                <p class="cta-desc">and <br>receive <span class="text-primary">$20 coupon</span> for first shopping
+                </p>
                 <!-- End .cta-desc -->
 
                 <form action="#">
@@ -4596,7 +4650,8 @@
             <div class="widget widget-about">
               <img src="assets/users/images/demos/demo-3/logo-footer.png" class="footer-logo" alt="Footer Logo"
                 width="105" height="25">
-              <p>Praesent dapibus, neque id cursus ucibus, tortor neque egestas augue, eu vulputate magna eros eu erat.
+              <p>Praesent dapibus, neque id cursus ucibus, tortor neque egestas augue, eu vulputate magna eros eu
+                erat.
               </p>
 
               <div class="widget-call">
@@ -4655,7 +4710,8 @@
 
     <div class="footer-bottom">
       <div class="container">
-        <p class="footer-copyright">Copyright © 2019 Molla Store. All Rights Reserved.</p><!-- End .footer-copyright -->
+        <p class="footer-copyright">Copyright © 2019 Molla Store. All Rights Reserved.</p>
+        <!-- End .footer-copyright -->
         <figure class="footer-payments">
           <img src="assets/users/images/payments.png" alt="Payment methods" width="272" height="20">
         </figure><!-- End .footer-payments -->
@@ -4904,8 +4960,8 @@
 
                   <div class="form-group">
                     <label for="singin-password">Password *</label>
-                    <input type="password" class="form-control" id="singin-password" [(ngModel)]="user.password"
-                      name="singin-password" required>
+                    <input type="password" class="form-control" id="singin-password" name="singin-password"
+                      [(ngModel)]="user.password" required>
                   </div><!-- End .form-group -->
 
                   <div class="form-footer">
@@ -4919,7 +4975,7 @@
                       <label class="custom-control-label" for="signin-remember">Remember Me</label>
                     </div><!-- End .custom-checkbox -->
 
-                    <a href="#" class="forgot-link">Forgot Your Password?</a>
+                    <a href="admin" class="forgot-link">Forgot Your Password?</a>
                   </div><!-- End .form-footer -->
                 </form>
                 <div class="form-choice">
@@ -5023,3 +5079,7 @@
     </div>
   </div>
 </div>
+
+<!-- </body>
+
+</html> -->

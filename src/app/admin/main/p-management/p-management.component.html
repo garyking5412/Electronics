@@ -57,7 +57,7 @@
                     <tr *ngFor="let emp of employees" (click)="loadDetail(emp.id)">
                       <td>{{emp.id}}</td>
                       <td>{{emp.name}}</td>
-                      <td>{{emp.birth|date}</td>
+                      <td>{{emp.birth|date}}</td>
                       <td>
                         {{emp.gender==1?'Nam':'Nữ'}}
                       </td>

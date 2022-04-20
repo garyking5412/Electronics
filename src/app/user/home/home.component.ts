@@ -8,28 +8,38 @@ import { LazyLoadScriptService } from 'src/app/service/lazy-load-script.service'
   styleUrls: ['./home.component.css'],
 })
 export class HomeComponent implements OnInit {
-  constructor(private lz: LazyLoadScriptService, private route: Router) {}
-
+  constructor(private lz: LazyLoadScriptService) {}
   user: any = {
-    username: '',
-    password: '',
+    username: 'username',
+    password: 'password',
   };
+  displayname: string = 'Sign In/Register';
+  checkLogin(): boolean {
+    if (this.displayname == 'Sign In/Register') {
+      return false;
+    } else return true;
+  }
   login() {
     if (this.user.username == 'admin' && this.user.password == '1234') {
-      sessionStorage.setItem('user', this.user);
-      this.route.navigate(['admin']);
+      window.location.href = 'admin';
+      sessionStorage.setItem('username', this.user.username);
+      console.log(this.user);
     } else {
-      alert('login failed!');
+      console.log(this.user);
+      console.log('failed');
     }
   }
-  sign: boolean = false;
+  navigate() {
+    if (this.displayname == 'admin') {
+      window.location.href = 'admin';
+    }
+  }
   ngOnInit(): void {
-    // check login status
-    let check = sessionStorage.getItem('user');
-    if (check == null) {
-      this.sign = true;
-    } else {
-      this.sign = false;
+    let check = sessionStorage.getItem('username');
+    console.log(check);
+    if (check != null && check != '') {
+      this.displayname = check;
+      console.log(this.displayname);
     }
     // <!-- Plugins JS File -->
     this.lz.loadScript('assets/users/js/jquery.min.js').subscribe((_) => {
@@ -83,5 +93,6 @@ export class HomeComponent implements OnInit {
     this.lz.loadScript('assets/users/js/demos/demo-3.js').subscribe((_) => {
       console.log('demo-3.js loaded!');
     });
+    // this.getUser();
   }
 }

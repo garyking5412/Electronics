@@ -7,6 +7,7 @@ import { FormsModule } from '@angular/forms';
 
 const route: Routes = [
   { path: '', redirectTo: 'home', pathMatch: 'full' },
+  // { path: 'user', component: UserComponent },
   { path: 'home', component: HomeComponent, children: [{ path: '' }] },
 ];
 
