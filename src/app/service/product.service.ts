@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 
@@ -7,16 +7,63 @@ import { Observable } from 'rxjs';
 })
 export class ProductService {
   constructor(private http: HttpClient) {}
-  getFromApi(url: string): Observable<any> {
-    return this.http.get(url);
+  httpOptions = {
+    headers: new HttpHeaders({
+      'Content-Type': 'application/json',
+      Authorization: 'my-auth-token',
+      charset: 'UTF-8',
+    }),
+  };
+  // postFile(fileToUpload: File, jwt: string): Observable<any> {
+  //   const endpoint = 'http://localhost:8089/api/emps/uploadFile';
+  //   const formData: FormData = new FormData();
+  //   formData.append('fileKey', fileToUpload, fileToUpload.name);
+  //   console.log(formData);
+  //   this.httpOptions.headers = this.httpOptions.headers.set(
+  //     'Authorization',
+  //     jwt
+  //   );
+  //   return this.http.post(endpoint, formData, this.httpOptions);
+  // }
+  getFromApi(url: string, jwt: string): Observable<any> {
+    this.httpOptions.headers = this.httpOptions.headers.set(
+      'Authorization',
+      jwt
+    );
+    return this.http.get(url, this.httpOptions);
+  }
+  // getJwt(url:string){
+  //   return this.http.post(url);
+  // }
+  post(url: string, entity: any, jwt: string) {
+    this.httpOptions.headers = this.httpOptions.headers.set(
+      'Authorization',
+      jwt
+    );
+    return this.http.post(url, entity, this.httpOptions);
   }
   postToApi(url: string, entity: any): Observable<any> {
-    return this.http.post(url, entity);
+    return this.http.post(url, entity, { responseType: 'text' });
   }
-  putToApi(url: string, id: any): Observable<any> {
-    return this.http.put(url, id);
+  putToApi(url: string, id: any, jwt: string): Observable<any> {
+    this.httpOptions.headers = this.httpOptions.headers.set(
+      'Authorization',
+      jwt
+    );
+    return this.http.put(url, id, this.httpOptions);
   }
-  deleteFromApi(url: string): Observable<any> {
-    return this.http.delete(url);
+  deleteFromApi(url: string, jwt: string): Observable<any> {
+    this.httpOptions.headers = this.httpOptions.headers.set(
+      'Authorization',
+      jwt
+    );
+    return this.http.delete(url, this.httpOptions);
   }
+  // getProductPage(url: string, jwt: string, pageNumber: number) {
+  //   this.httpOptions.headers = this.httpOptions.headers.set(
+  //     'Authorization',
+  //     jwt
+  //   );
+  //   return this.http.get(url + pageNumber, this.httpOptions);
+  // }
 }

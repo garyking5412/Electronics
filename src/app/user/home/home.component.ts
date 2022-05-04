@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { LazyLoadScriptService } from 'src/app/service/lazy-load-script.service';
+import { ProductService } from 'src/app/service/product.service';
 
 @Component({
   selector: 'app-home',
@@ -8,7 +9,7 @@ import { LazyLoadScriptService } from 'src/app/service/lazy-load-script.service'
   styleUrls: ['./home.component.css'],
 })
 export class HomeComponent implements OnInit {
-  constructor(private lz: LazyLoadScriptService) {}
+  constructor(private lz: LazyLoadScriptService, private us: ProductService) {}
   user: any = {
     username: 'username',
     password: 'password',
@@ -19,15 +20,39 @@ export class HomeComponent implements OnInit {
       return false;
     } else return true;
   }
+  jwt: string = '';
+  url: string = 'http://localhost:8089/api/validateUser';
+  // roles: any = [];
   login() {
-    if (this.user.username == 'admin' && this.user.password == '1234') {
-      window.location.href = 'admin';
-      sessionStorage.setItem('username', this.user.username);
-      console.log(this.user);
-    } else {
-      console.log(this.user);
-      console.log('failed');
-    }
+    this.us
+      .postToApi('http://localhost:8089/api/token', this.user)
+      .subscribe((response) => {
+        this.jwt = 'Bearer ' + response;
+        this.us.post(this.url, this.user, this.jwt).subscribe((res) => {
+          console.log(res);
+          // this.roles = Object.values(res);
+          if (res == 1) {
+            window.location.href = 'admin';
+            sessionStorage.setItem('username', this.user.username);
+            console.log(this.user);
+            return;
+          } else {
+            window.location.href = 'user';
+            sessionStorage.setItem('username', this.user.username);
+          }
+          // let roles: any = res;
+          // roles.forEach((element: number) => {
+          //   if (element == 1) {
+          //     window.location.href = 'admin';
+          //     sessionStorage.setItem('username', this.user.username);
+          //     console.log(this.user);
+          //     return;
+          //   }
+          // });
+          // window.location.href = 'user';
+          // sessionStorage.setItem('username', this.user.username);
+        });
+      });
   }
   navigate() {
     if (this.displayname == 'admin') {

@@ -2,7 +2,9 @@
 <div class="wrap">
   <div class="container">
     <div class="row">
-      <div class="col-md-2"></div>
+      <div class="col-md-2 display-img">
+        <img src="assets\Wallpapers\{{emp.img}}" alt="this is a photo">
+      </div>
       <div class="col-sm-12 col-md-8">
         <div class="main">
           <div class="row">
@@ -28,6 +30,15 @@
                 <textarea title="Position" placeholder="Nhập vị trí chức danh vào đây" [(ngModel)]="emp.pos"></textarea>
                 <p class="lbl">Ngày sinh nhân viên</p>
                 <input type="date" title="Birthday" [(ngModel)]="emp.birth">
+                <p class="lbl">Image Upload</p>
+                <!-- <label for="myfile">Select files:</label> -->
+                <input placeholder="image upload here !" type="file" if="myfile" class="file-input"
+                  (change)="onFileSelected($event)" #fileUpload multiple>
+                <div class="file-upload">
+                  <button mat-mini-fab color="primary" class="upload-btn" (click)="fileUpload.click()">
+                    attach_file
+                  </button>
+                </div>
                 <div class="controller">
                   <button type="button" class="btn btn-success" id="btnAdd" title="none" (click)="add(emp)">Thêm
                     mới</button>
@@ -64,6 +75,7 @@
                       <td>{{emp.ad}}</td>
                       <td>{{emp.pos}}</td>
                       <td>{{emp.sal}}</td>
+
                     </tr>
                   </table>
                 </div>
@@ -72,7 +84,8 @@
           </div>
         </div>
       </div>
-      <div class="col-md-2"></div>
+      <div class="col-md-2">
+      </div>
     </div>
   </div>
 </div>
