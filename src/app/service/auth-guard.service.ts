@@ -17,7 +17,20 @@ export class AuthGuardService implements CanActivate {
     route: ActivatedRouteSnapshot,
     state: RouterStateSnapshot
   ): boolean {
-    if (sessionStorage.getItem('user') != null) {
+    if (sessionStorage.getItem('username') != null) {
+      let roles = sessionStorage.getItem('roles')
+        ? JSON.parse(sessionStorage.getItem('roles') || '{}')
+        : [];
+      console.log(roles);
+      for (let i = 0; i < roles.length; i++) {
+        if (roles[i] == 'ADMIN') {
+          return true;
+        } else {
+          alert('access denied !');
+          this.route.navigate(['user']);
+          return false;
+        }
+      }
       return true;
     } else {
       alert('Login first !');

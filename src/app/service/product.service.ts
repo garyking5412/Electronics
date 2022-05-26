@@ -32,6 +32,9 @@ export class ProductService {
     );
     return this.http.get(url, this.httpOptions);
   }
+  get(url: string) {
+    return this.http.get(url);
+  }
   // getJwt(url:string){
   //   return this.http.post(url);
   // }

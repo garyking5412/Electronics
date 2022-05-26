@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { LazyLoadScriptService } from 'src/app/service/lazy-load-script.service';
-
+type User = {
+  name: string;
+  // role: string;
+};
 @Component({
   selector: 'app-main',
   templateUrl: './main.component.html',
@@ -8,7 +11,15 @@ import { LazyLoadScriptService } from 'src/app/service/lazy-load-script.service'
 })
 export class MainComponent implements OnInit {
   constructor(private lzLoad: LazyLoadScriptService) {}
-
+  user: User = {
+    name: '',
+  };
+  loadUser() {
+    this.user.name = sessionStorage.getItem('username')
+      ? sessionStorage.getItem('username') || ''
+      : '';
+    console.log(this.user);
+  }
   ngOnInit(): void {
     this.lzLoad
       .loadScript('assets/plugins/jquery/jquery.min.js')
@@ -26,5 +37,6 @@ export class MainComponent implements OnInit {
     // this.lzLoad.loadScript('assets/dist/js/demo.js').subscribe((_) => {
     //   console.log('DEMO is loaded!');
     // });
+    this.loadUser();
   }
 }

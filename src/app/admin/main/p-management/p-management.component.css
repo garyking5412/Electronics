@@ -2,12 +2,19 @@
   box-sizing: border-box;
 }
 .main {
-  display: flexbox;
+  display: flex;
   flex-wrap: wrap;
 }
-.container {
-  /* background-image: ; */
-  /* background-color: red; */
+.wrap {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+}
+.main-display {
+  width: 100%;
+  margin: 0 20px;
+  justify-content: center;
 }
 h1,
 h2 {
@@ -20,6 +27,13 @@ h2 {
   font-family: monospace;
   font-size: 16px;
   font-weight: bold;
+}
+.aside {
+  max-height: 1060px;
+}
+
+.aside > input {
+  width: 100%;
 }
 input,
 textarea {
@@ -37,10 +51,21 @@ label {
   margin-left: 5px;
 }
 .controller {
-  display: flexbox;
+  display: flex;
   flex-wrap: wrap;
   align-items: center;
-  justify-content: center;
+  justify-content: space-around;
+}
+.controller > button {
+  display: inline-block;
+  width: 20%;
+  /* margin: 5px; */
+  border: none;
+  outline: 1px solid black;
+  margin: 5px 0px;
+  font-family: Consolas;
+  font-weight: bold;
+  font-size: 20px;
 }
 @keyframes bounce {
   50% {
@@ -51,17 +76,9 @@ label {
     opacity: 0;
   }
 }
-.btn {
-  width: 100%;
-  border: none;
-  outline: 1px solid black;
-  margin: 5px 0px;
-  font-family: Consolas;
-  font-weight: bold;
-  font-size: 20px;
-}
-.btn:active {
-  /* animation: bounce 0.2s 1 linear; */
+
+.btn::after {
+  animation: bounce 0.2s 1 linear;
 }
 #btnReload {
   color: azure;
@@ -70,31 +87,43 @@ input:checked .checkmark {
   background-color: green;
   color: azure;
 }
-table {
-  border-collapse: collapse;
+.content {
+  max-height: 1060px;
+  /* overflow: scroll; */
+}
+.list {
   width: 100%;
+  /* overflow: scroll; */
+  position: relative;
 }
-table th,
-td {
-  border: 1px solid black;
-}
-td:hover {
-  cursor: pointer;
-}
-/* tr {
-  background-color: green;
-  color: azure;
-} */
-th {
-  font-family: "Times New Roman", Times, serif;
-  text-align: center;
-  font-weight: 800;
-}
-td {
-  text-align: center;
+.display-img {
+  padding: 10px 30px;
 }
 .display-img img {
   width: 100%;
   object-fit: cover;
   height: 100%;
+}
+textarea {
+  width: 100%;
+}
+tbody > tr:hover {
+  background-color: #2ecc71;
+  color: #f5f6fa;
+  cursor: pointer;
+}
+tbody > tr > td {
+  /* font-family: monospace; */
+  text-align: left;
+  /* word-wrap: break-word; */
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 150px;
+  /* display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical; */
+}
+.card {
+  height: 700px;
 }

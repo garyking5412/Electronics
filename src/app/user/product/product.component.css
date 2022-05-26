@@ -1,0 +1,5 @@
+.prod-img {
+  object-fit: cover;
+  height: 240px;
+  overflow: hidden;
+}
