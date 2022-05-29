@@ -11,6 +11,7 @@ import { DetailComponent } from './detail/detail.component';
 import { MainComponent } from './main/main.component';
 import { CartComponent } from './cart/cart.component';
 import { CheckoutComponent } from './checkout/checkout.component';
+import { ProfileComponent } from './profile/profile.component';
 
 const route: Routes = [
   { path: '', redirectTo: 'home', pathMatch: 'full' },
@@ -25,6 +26,7 @@ const route: Routes = [
       { path: 'detail/:id', component: DetailComponent },
       { path: 'product/detail/:id', component: DetailComponent },
       { path: 'checkout', component: CheckoutComponent },
+      { path: 'profile/:username', component: ProfileComponent },
       { path: '', redirectTo: 'main', pathMatch: 'full' },
     ],
   },
@@ -38,6 +40,7 @@ const route: Routes = [
     MainComponent,
     CartComponent,
     CheckoutComponent,
+    ProfileComponent,
   ],
   imports: [
     CommonModule,

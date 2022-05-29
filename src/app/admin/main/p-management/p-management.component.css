@@ -60,12 +60,8 @@ label {
   display: inline-block;
   width: 20%;
   /* margin: 5px; */
-  border: none;
-  outline: 1px solid black;
+
   margin: 5px 0px;
-  font-family: Consolas;
-  font-weight: bold;
-  font-size: 20px;
 }
 @keyframes bounce {
   50% {

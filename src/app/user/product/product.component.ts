@@ -1,4 +1,11 @@
-import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import {
+  Component,
+  EventEmitter,
+  Input,
+  OnInit,
+  Output,
+  OnChanges,
+} from '@angular/core';
 import { ProductService } from 'src/app/service/product.service';
 
 @Component({
@@ -8,15 +15,22 @@ import { ProductService } from 'src/app/service/product.service';
 })
 export class ProductComponent implements OnInit {
   @Output() addToCart: EventEmitter<any> = new EventEmitter<any>();
+  // @Input() filter: any = {};
   constructor(private proSer: ProductService) {}
-
+  sort: string = 'name';
+  filter: any = {
+    id: 0,
+    name: '',
+    cateId: 0,
+  };
+  categories: any[] = [];
   totalPages: number = 0;
   pages: any[] = [];
   pageData: any[] = [];
   state: any = {
     pageNumber: 0,
     pageSize: 0,
-    pageLimit: 0,
+    pageLimit: 3,
     totalProducts: 0,
   };
   clickBuy(Product: any) {
@@ -43,26 +57,22 @@ export class ProductComponent implements OnInit {
   }
   url: string = 'http://localhost:8089/';
   loadData(pageNumber: number) {
+    // get categories
     this.proSer
-      .getFromApi(this.url + 'user/getAllProducts/' + pageNumber, '')
+      .getFromApi(this.url + 'user/getAllCategories', '')
       .subscribe((res) => {
-        // this.totalPages = res.totalPages;
-        // this.currentPage = res.number;
-        // if (pageNumber == this.totalPages) {
-        //   let start = pageNumber - 3;
-        //   let end = pageNumber;
-        //   this.pages = new Array(this.totalPages).slice(start, end);
-        // }
-        // if (pageNumber == 0) {
-        //   let start = pageNumber;
-        //   let end = pageNumber + 3;
-        //   this.pages = new Array(this.totalPages).slice(start, end);
-        // } else {
-        //   let start = pageNumber - 1;
-        //   let end = pageNumber + 2;
-        //   this.pages = new Array(this.totalPages).slice(start, end);
-        // }
-        // console.log(this.pages);
+        this.categories = res;
+      });
+    // console.log(this.filter);
+    // get products
+    this.proSer
+      .post(
+        this.url + 'user/product/filter/' + this.sort + '/' + pageNumber,
+        this.filter,
+        ''
+      )
+      .subscribe((response) => {
+        let res: any = response;
         this.pageData = res.content;
         this.state = {
           pageNumber: res.number,
@@ -93,10 +103,16 @@ export class ProductComponent implements OnInit {
         return this.pages;
       });
   }
+  ngOnChanges(): void {
+    //Called before any other lifecycle hook. Use it to inject dependencies, but avoid any serious work here.
+    //Add '${implements OnChanges}' to the class.
+    console.log(this.filter);
+    this.loadData(0);
+  }
   ngOnInit(): void {
     // this.initPager();
+    this.filter.name = sessionStorage.getItem('filter');
+    // console.log(this.filter);
     this.loadData(0);
-    console.log(this.pages);
-    console.log(this.pageData);
   }
 }

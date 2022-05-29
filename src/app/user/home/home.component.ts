@@ -5,11 +5,14 @@ import {
   FormGroup,
   Validators,
 } from '@angular/forms';
+import { Router } from '@angular/router';
 import { LazyLoadScriptService } from 'src/app/service/lazy-load-script.service';
 import { ProductService } from 'src/app/service/product.service';
 import { CartComponent } from '../cart/cart.component';
 import { CheckoutComponent } from '../checkout/checkout.component';
+import { DetailComponent } from '../detail/detail.component';
 import { ProductComponent } from '../product/product.component';
+import { ProfileComponent } from '../profile/profile.component';
 // type Users = {
 //   id: 0;
 //   firstName: '';
@@ -26,11 +29,24 @@ import { ProductComponent } from '../product/product.component';
   styleUrls: ['./home.component.css'],
 })
 export class HomeComponent implements OnInit {
-  // @Input() carts: any[] = [];\
+  filter: any = {
+    id: 0,
+    name: sessionStorage.getItem('filter'),
+    cateId: 0,
+  };
   carts: any[] = [];
   cartTotal: number = 0;
+  search() {
+    console.log(this.filter);
+    // this.route.navigate(['/user/home/product']);
+    sessionStorage.setItem('filter', this.filter.name);
+    window.location.href = 'user/home/product';
+  }
   onActive(componentRef: any) {
     if (componentRef instanceof ProductComponent) {
+      // [someInput]="inputValue"
+      // componentRef.filter = this.filter;
+      // componentRef.loadData(0);
       componentRef.addToCart.subscribe(() => {
         this.carts = sessionStorage.getItem('carts')
           ? JSON.parse(sessionStorage.getItem('carts') || '{}')
@@ -68,11 +84,28 @@ export class HomeComponent implements OnInit {
         });
       });
     }
+    if (componentRef instanceof DetailComponent) {
+      componentRef.clickBuy.subscribe(() => {
+        this.carts = sessionStorage.getItem('carts')
+          ? JSON.parse(sessionStorage.getItem('carts') || '{}')
+          : [];
+        // console.log(this.carts);
+        this.cartTotal = 0;
+        this.carts.forEach((element: { product: any; quantity: number }) => {
+          this.cartTotal += element.product.price * element.quantity;
+        });
+        // console.log(this.cartTotal);
+      });
+    }
+    if (componentRef instanceof ProfileComponent) {
+      componentRef.user = this.user;
+    }
   }
   constructor(
     private lz: LazyLoadScriptService,
     private us: ProductService,
-    private fb: FormBuilder
+    private fb: FormBuilder,
+    private route: Router
   ) {}
   regexNumber: string =
     '^(0?)(3[2-9]|5[6|8|9]|7[0|6-9]|8[0-6|8|9]|9[0-4|6-9])[0-9]{7}$';
@@ -161,7 +194,8 @@ export class HomeComponent implements OnInit {
         window.location.href = 'admin';
         return;
       } else {
-        window.location.href = 'user';
+        console.log(this.user);
+        this.route.navigate(['/user/home/profile/' + this.displayname]);
       }
     }
   }

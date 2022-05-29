@@ -35,6 +35,13 @@ export class ProductService {
   get(url: string) {
     return this.http.get(url);
   }
+  // getFilter(url:string,request:any,jwt:string){
+  //   this.httpOptions.headers = this.httpOptions.headers.set(
+  //     'Authorization',
+  //     jwt
+  //   );
+  //   return this.http.get()
+  // }
   // getJwt(url:string){
   //   return this.http.post(url);
   // }

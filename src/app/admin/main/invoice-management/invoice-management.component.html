@@ -48,14 +48,14 @@
             <option value="Completed">Completed</option>
           </select>
           <div class="controller">
-            <button type="button" class="btn btn-success" (click)="add(invoice)" id="btnAdd" title="none">Thêm
-              mới</button>
-            <button type="button" class="btn btn-primary" id="btnUpdate" title="none"
-              (click)="update(invoice)">Lưu</button>
-            <button type="button" class="btn btn-danger" id="btnDelete" (click)="remove(invoice.id)"
-              title="none">Xóa</button>
-            <button type="button" class="btn btn-warning" id="btnReload" (click)="loadData()" title="none">Tải
-              lại</button>
+            <button type="button" class="btn btn-block btn-success btn-sm" (click)="add(invoice)" id="btnAdd"
+              title="none">Add</button>
+            <button type="button" class="btn btn-block btn-info btn-sm" id="btnUpdate" title="none"
+              (click)="update(invoice)">Save</button>
+            <button type="button" class="btn btn-block btn-danger btn-sm" id="btnDelete" (click)="remove(invoice.id)"
+              title="none">Delete</button>
+            <button type="button" class="btn btn-block btn-warning btn-sm" id="btnReload" (click)="loadData()"
+              title="none">Reload</button>
           </div>
         </div>
       </div>
