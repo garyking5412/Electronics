@@ -20,6 +20,14 @@ export class MainComponent implements OnInit {
       : '';
     console.log(this.user);
   }
+  logOut() {
+    if (confirm('Are you sure you want to log out?')) {
+      sessionStorage.removeItem('token');
+      sessionStorage.removeItem('username');
+      sessionStorage.removeItem('roles');
+      window.location.href = 'user';
+    }
+  }
   ngOnInit(): void {
     this.lzLoad
       .loadScript('assets/plugins/jquery/jquery.min.js')

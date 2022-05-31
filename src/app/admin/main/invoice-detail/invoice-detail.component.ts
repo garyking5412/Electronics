@@ -67,7 +67,7 @@ export class InvoiceDetailComponent implements OnInit {
     let detail: invoiceDetail = {
       id: 0,
       product: {
-        id: 3,
+        id: 85,
       },
       quantity: 1,
       invoice: {
