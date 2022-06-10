@@ -25,6 +25,9 @@ import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
+import { UManagementComponent } from './main/u-management/u-management.component';
+import { RManagementComponent } from './main/r-management/r-management.component';
+import { UserDetailComponent } from './main/user-detail/user-detail.component';
 
 const route: Routes = [
   { path: '', redirectTo: 'main', pathMatch: 'full' },
@@ -35,9 +38,11 @@ const route: Routes = [
       { path: '', redirectTo: 'cmanagement', pathMatch: 'full' },
       { path: 'cmanagement', component: CManagementComponent },
       { path: 'pmanagement', component: PManagementComponent },
+      { path: 'umanagement', component: UManagementComponent },
       { path: 'invoiceManagement', component: InvoiceManagementComponent },
       { path: 'invoice', component: InvoiceComponent },
       { path: 'invoice/details/:id', component: InvoiceDetailComponent },
+      { path: 'umanagement/details/:id', component: UserDetailComponent },
     ],
     // canActivate: [AuthGuardService],
   },
@@ -50,6 +55,9 @@ const route: Routes = [
     InvoiceComponent,
     InvoiceDetailComponent,
     InvoiceManagementComponent,
+    UManagementComponent,
+    RManagementComponent,
+    UserDetailComponent,
   ],
   imports: [
     CommonModule,

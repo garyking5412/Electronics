@@ -143,6 +143,7 @@ export class PManagementComponent implements OnInit {
   onFileSelected(event: any) {
     var file: File = event.target.files[0];
     this.emp.image = file.name;
+    console.log(file);
   }
   ngOnInit(): void {
     // this.load(0);
