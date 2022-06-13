@@ -39,6 +39,7 @@ const route: Routes = [
       { path: 'cmanagement', component: CManagementComponent },
       { path: 'pmanagement', component: PManagementComponent },
       { path: 'umanagement', component: UManagementComponent },
+      { path: 'rmanagement', component: RManagementComponent },
       { path: 'invoiceManagement', component: InvoiceManagementComponent },
       { path: 'invoice', component: InvoiceComponent },
       { path: 'invoice/details/:id', component: InvoiceDetailComponent },

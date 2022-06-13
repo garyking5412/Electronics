@@ -12,6 +12,7 @@ export class PManagementComponent implements OnInit {
   constructor(private proSer: ProductService, private datepipe: DatePipe) {}
   products: any[] = [];
   emp: any = {};
+  categories: any[] = [];
   url: string = 'http://localhost:8089/';
   jwt: string = sessionStorage.getItem('token')
     ? JSON.parse(sessionStorage.getItem('token') || '')
@@ -22,6 +23,11 @@ export class PManagementComponent implements OnInit {
       .getFromApi(this.url + 'admin/getAllProducts', 'Bearer ' + this.jwt)
       .subscribe((res) => {
         this.products = res;
+      });
+    this.proSer
+      .getFromApi(this.url + 'admin/getAllCategories', 'Bearer ' + this.jwt)
+      .subscribe((res) => {
+        this.categories = res;
       });
   }
   loadDetail(id: any) {
@@ -90,22 +96,8 @@ export class PManagementComponent implements OnInit {
             )
             .subscribe((res) => {
               // console.log(res.status);
-              console.log(JSON.parse(res));
-              this.emp = {
-                id: 0,
-                name: '',
-                des: '',
-                rate: 0,
-                status: 0,
-                color: '',
-                spec: '',
-                stock: 0,
-                price: 0,
-                image: '',
-                category: {
-                  id: 0,
-                },
-              };
+              alert(res);
+              this.emp = {};
               // this.load(0);
               this.load();
             });
@@ -134,9 +126,8 @@ export class PManagementComponent implements OnInit {
         'Bearer ' + this.jwt
       )
       .subscribe((res) => {
-        console.log(res);
-        // this.load(0);
-        this.load();
+        alert(res);
+        // this.load();
       });
   }
   // fileName = '';

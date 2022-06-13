@@ -21,7 +21,11 @@
               <p class="lbl">Đánh giá trung bình</p>
               <input type="number" title="Employee _Details" placeholder="" [(ngModel)]="emp.rate">
               <p class="lbl">Trạng thái sản phẩm</p>
-              <input type="number" title="Employee _Details" placeholder="" [(ngModel)]="emp.status">
+              <!-- <input type="number" title="Employee _Details" placeholder="" [(ngModel)]="emp.status"> -->
+              <select title="status" name="status" [(ngModel)]="emp.status" [ngModelOptions]="{standalone: true}">
+                <option value="1">Active</option>
+                <option value="0">Inactive</option>
+              </select>
               <p class="lbl">Màu sắc</p>
               <input type="text" title="Employee _Details" placeholder="" [(ngModel)]="emp.color">
               <p class="lbl">Cấu hình</p>
@@ -32,7 +36,10 @@
               <p class="lbl">Giá sản phẩm</p>
               <input type="number" title="Employee _Details" placeholder="" [(ngModel)]="emp.price">
               <p class="lbl">Trực thuộc danh mục</p>
-              <input type="number" title="Employee _Details" placeholder="" [(ngModel)]="emp.cateId">
+              <!-- <input type="number" title="Employee _Details" placeholder="" [(ngModel)]="emp.cateId"> -->
+              <select title="categories" [(ngModel)]="emp.cateId">
+                <option *ngFor="let cate of categories" value="{{cate.id}}">{{cate.name}}</option>
+              </select>
               <p class="lbl">Image Upload</p>
               <!-- <label for="myfile">Select files:</label> -->
               <input placeholder="image upload here !" type="file" if="myfile" class="file-input"

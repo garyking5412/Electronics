@@ -189,14 +189,12 @@
                             <input type="password" class="form-control" placeholder="Name" [(ngModel)]="user.password">
                           </div>
                         </div>
-                        <div class="form-group row roles">
+                        <div class="form-group row">
                           <label for="inputName" class="col-sm-2 col-form-label">Roles</label>
-                          <div class="col-sm-10">
-                            <div class="row">
-                              <div *ngFor="let item of user.userRolesDtos" class="col-3">
-                                <p [ngStyle]="{'margin': '0px'}">{{item.roleDto.name}}</p>
-                              </div>
-                            </div>
+                          <div class="col-sm-10 roles">
+                            <select title="shipping" [(ngModel)]="roleId">
+                              <option *ngFor="let item of roles" value="{{item.id}}">{{item.name}}</option>
+                            </select>
                           </div>
                         </div>
                         <div class="form-group row">
