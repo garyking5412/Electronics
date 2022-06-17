@@ -25,6 +25,7 @@ const route: Routes = [
       { path: 'cart', component: CartComponent },
       { path: 'detail/:id', component: DetailComponent },
       { path: 'product/detail/:id', component: DetailComponent },
+      { path: 'main/detail/:id', component: DetailComponent },
       { path: 'checkout', component: CheckoutComponent },
       { path: 'profile/:username', component: ProfileComponent },
       { path: '', redirectTo: 'main', pathMatch: 'full' },

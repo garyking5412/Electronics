@@ -6,6 +6,7 @@ import {
   Validators,
 } from '@angular/forms';
 import { Router } from '@angular/router';
+import { MainComponent } from 'src/app/user/main/main.component';
 import { LazyLoadScriptService } from 'src/app/service/lazy-load-script.service';
 import { ProductService } from 'src/app/service/product.service';
 import { CartComponent } from '../cart/cart.component';
@@ -13,6 +14,7 @@ import { CheckoutComponent } from '../checkout/checkout.component';
 import { DetailComponent } from '../detail/detail.component';
 import { ProductComponent } from '../product/product.component';
 import { ProfileComponent } from '../profile/profile.component';
+import { UserModule } from '../user.module';
 // type Users = {
 //   id: 0;
 //   firstName: '';
@@ -44,9 +46,19 @@ export class HomeComponent implements OnInit {
   }
   onActive(componentRef: any) {
     if (componentRef instanceof ProductComponent) {
-      // [someInput]="inputValue"
-      // componentRef.filter = this.filter;
-      // componentRef.loadData(0);
+      componentRef.addToCart.subscribe(() => {
+        this.carts = sessionStorage.getItem('carts')
+          ? JSON.parse(sessionStorage.getItem('carts') || '{}')
+          : [];
+
+        this.cartTotal = 0;
+        this.carts.forEach((element: { product: any; quantity: number }) => {
+          this.cartTotal += element.product.price * element.quantity;
+        });
+        // console.log(this.cartTotal);
+      });
+    }
+    if (componentRef instanceof MainComponent) {
       componentRef.addToCart.subscribe(() => {
         this.carts = sessionStorage.getItem('carts')
           ? JSON.parse(sessionStorage.getItem('carts') || '{}')
