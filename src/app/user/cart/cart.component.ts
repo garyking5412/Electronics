@@ -25,6 +25,7 @@ export class CartComponent implements OnInit {
   updateCart() {
     sessionStorage.setItem('carts', JSON.stringify(this.carts));
     this.update.emit();
+    this.loadData();
   }
   removeItem(item: any) {
     let id = item.product.id;

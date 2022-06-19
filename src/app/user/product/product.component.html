@@ -136,7 +136,7 @@
                     (click)="initPager(1)">{{secondPage}}</a></li>
                 <li class="page-item"><a class="page-link" href="javascript:void(0)"
                     (click)="initPager(1)">{{thirdPage}}</a></li> -->
-                <li class="page-item-total">of {{totalPages+1}}</li>
+                <!-- <li class="page-item-total">of {{totalPages+1}}</li> -->
                 <li *ngIf="state.pageNumber<totalPages" class="page-item">
                   <a class="page-link page-link-next" href="javascript:void(0)" (click)="loadData(totalPages-1)"
                     aria-label="Next">
